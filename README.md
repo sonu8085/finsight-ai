@@ -12,4 +12,4 @@ Brief description of what it does.
 4. Run the app
 
 ## Live Demo
-[link here once deployed](https://finsight-d1nea7wkz-sonu-team1.vercel.app/)]
+[link](https://finsight-d1nea7wkz-sonu-team1.vercel.app/)
