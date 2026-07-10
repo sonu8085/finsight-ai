@@ -50,7 +50,7 @@ Axios
 Architecture pattern: the backend follows a layered structure — routes → services → repositories → models — separating HTTP handling, business logic, and data access rather than putting everything in the route handlers.
 
 Project Structure
-
+```
 FinSight-AI/
 ├── backend/
 │   ├── app/
@@ -72,7 +72,7 @@ FinSight-AI/
     │   ├── pages/           # Dashboard, Transactions, Budgets, Goals, Assistant, Login, Register, Import
     │   └── types/           # TypeScript types
     └── package.json
-
+```
 Running Locally
 
 Backend
