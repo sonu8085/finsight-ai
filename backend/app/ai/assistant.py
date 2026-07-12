@@ -59,8 +59,8 @@ class AIService:
             parsed = json.loads(content)
             if isinstance(parsed, list) and parsed:
                 return parsed
-        except Exception:
-            pass  # fall back silently to rule-based insights
+        except Exception as exc:
+            return f"AI assistant is temporarily unavailable ({exc.__class__.__name__}: {exc}). Please try again shortly."
 
         return base_insights
 
@@ -86,4 +86,5 @@ class AIService:
             )
             return response.choices[0].message.content or "I couldn't generate a response, please try again."
         except Exception as exc:
-            return f"AI assistant is temporarily unavailable ({exc.__class__.__name__}). Please try again shortly."
+            # return f"AI assistant is temporarily unavailable ({exc.__class__.__name__}). Please try again shortly."
+            return f"AI assistant is temporarily unavailable ({exc.__class__.__name__}: {exc}). Please try again shortly."

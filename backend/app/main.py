@@ -38,4 +38,9 @@ async def root():
 
 @app.get("/health", tags=["Health"])
 async def health_check():
-    return {"status": "healthy"}
+    return {
+        "status": "healthy",
+        "ai_model": settings.AI_MODEL,
+        "openai_base_url": settings.OPENAI_BASE_URL,
+        "openai_api_key_set": bool(settings.OPENAI_API_KEY),
+    }
