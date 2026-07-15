@@ -92,3 +92,4 @@ class AIService:
         except Exception as exc:
             # return f"AI assistant is temporarily unavailable ({exc.__class__.__name__}). Please try again shortly."
             return f"AI assistant is temporarily unavailable ({exc.__class__.__name__}: {exc}). Please try again shortly."
+            
