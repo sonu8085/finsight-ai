@@ -1,28 +1,29 @@
 """Application configuration loaded from environment variables."""
 from functools import lru_cache
+from pathlib import Path
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+# backend/app/core/config.py -> backend/
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(env_file=BASE_DIR / ".env", extra="ignore")
 
     # Database
-    DATABASE_URL: str = "postgresql+asyncpg://finsight_db_z9pe_user:DSgXQpk2rR784EzTEEanhcfDZfkjn0Ea@dpg-d975drsvikkc73dlo59g-a/finsight_db_z9pe"
+    DATABASE_URL: str = "postgresql+asyncpg://sonu2704:0GVZoxEOYwrkUA2ukevvaD7te28ltIyT@dpg-d975drsvikkc73dlo59g-a.singapore-postgres.render.com/finsight_db_z9pe"
 
     # Auth
-    SECRET_KEY: str = "234cd2ab81b5fc92b5197931907cc848ba6f682e5fd25541db3048e29e189464"
+    SECRET_KEY: str = "V6JGoPztxvenCKnzE4gMNkxgFSi3aaZpwbbqsNiEeo"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
 
     # AI
-<<<<<<< HEAD
     OPENAI_API_KEY: str | None = None
     OPENAI_BASE_URL: str | None = None
-    AI_MODEL: str = "gpt-4o-mini"
-=======
-    OPENAI_API_KEY: 
->>>>>>> 268c7e5e9be0e48925c372cfc2ceb2e0a801c53e
+    AI_MODEL: str = "gemini-3.5-flash"
 
     # App
     ENVIRONMENT: str = "production"
