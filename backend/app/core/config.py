@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
 
     # AI
-    OPENAI_API_KEY: "AQ.Ab8RN6Ioj4Z-sXbwobEB9erKsuEBAKkerPyYhnRU9Y5WGcPCgg"
+    OPENAI_API_KEY: 
 
     # App
     ENVIRONMENT: str = "production"
