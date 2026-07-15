@@ -35,7 +35,6 @@ app.include_router(api_router)
 async def root():
     return {"status": "ok", "service": "FinSight AI", "version": "1.0.0"}
 
-
 @app.get("/health", tags=["Health"])
 async def health_check():
     return {
@@ -43,4 +42,8 @@ async def health_check():
         "ai_model": settings.AI_MODEL,
         "openai_base_url": settings.OPENAI_BASE_URL,
         "openai_api_key_set": bool(settings.OPENAI_API_KEY),
+<<<<<<< HEAD
     }
+=======
+    }
+>>>>>>> 268c7e5e9be0e48925c372cfc2ceb2e0a801c53e

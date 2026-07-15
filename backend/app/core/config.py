@@ -7,22 +7,26 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
     # Database
-    DATABASE_URL: str = "postgresql+asyncpg://finsight:finsight@localhost:5432/finsight_db"
+    DATABASE_URL: str = "postgresql+asyncpg://finsight_db_z9pe_user:DSgXQpk2rR784EzTEEanhcfDZfkjn0Ea@dpg-d975drsvikkc73dlo59g-a/finsight_db_z9pe"
 
     # Auth
-    SECRET_KEY: str = "dev-secret-key-change-me"
+    SECRET_KEY: str = "234cd2ab81b5fc92b5197931907cc848ba6f682e5fd25541db3048e29e189464"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
 
     # AI
+<<<<<<< HEAD
     OPENAI_API_KEY: str | None = None
     OPENAI_BASE_URL: str | None = None
     AI_MODEL: str = "gpt-4o-mini"
+=======
+    OPENAI_API_KEY: 
+>>>>>>> 268c7e5e9be0e48925c372cfc2ceb2e0a801c53e
 
     # App
-    ENVIRONMENT: str = "development"
-    CORS_ORIGINS: str = "http://localhost:5173"
+    ENVIRONMENT: str = "production"
+    CORS_ORIGINS: str = "https://finsight-ai-kappa-six.vercel.app"
 
     @property
     def cors_origins_list(self) -> list[str]:
