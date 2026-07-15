@@ -25,7 +25,11 @@ class AIService:
     def __init__(self, db: AsyncSession):
         self.db = db
         self.transaction_repo = TransactionRepository(db)
-        self.client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY) if settings.OPENAI_API_KEY else None
+        self.client = (
+            AsyncOpenAI(api_key=settings.OPENAI_API_KEY, base_url=settings.OPENAI_BASE_URL)
+            if settings.OPENAI_API_KEY
+            else None
+        )
 
     async def _get_stats(self, user_id: uuid.UUID) -> dict:
         transactions = await self.transaction_repo.get_all_for_user(user_id, limit=1000)
@@ -40,7 +44,7 @@ class AIService:
 
         try:
             response = await self.client.chat.completions.create(
-                model="gpt-4o-mini",
+                model=settings.AI_MODEL,
                 messages=[
                     {"role": "system", "content": SYSTEM_PROMPT},
                     {
@@ -60,7 +64,7 @@ class AIService:
             if isinstance(parsed, list) and parsed:
                 return parsed
         except Exception as exc:
-            return f"AI assistant is temporarily unavailable ({exc.__class__.__name__}: {exc}). Please try again shortly."
+            return [f"AI assistant is temporarily unavailable ({exc.__class__.__name__}: {exc}). Please try again shortly."]
 
         return base_insights
 
@@ -76,7 +80,7 @@ class AIService:
 
         try:
             response = await self.client.chat.completions.create(
-                model="gpt-4o-mini",
+                model=settings.AI_MODEL,
                 messages=[
                     {"role": "system", "content": SYSTEM_PROMPT},
                     {"role": "user", "content": f"My spending data: {json.dumps(stats)}\n\nQuestion: {message}"},

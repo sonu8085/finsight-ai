@@ -17,6 +17,8 @@ class Settings(BaseSettings):
 
     # AI
     OPENAI_API_KEY: str | None = None
+    OPENAI_BASE_URL: str | None = None
+    AI_MODEL: str = "gpt-4o-mini"
 
     # App
     ENVIRONMENT: str = "development"
